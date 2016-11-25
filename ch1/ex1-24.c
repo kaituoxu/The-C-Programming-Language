@@ -60,7 +60,7 @@ int main()
 				++nl;
 				break;
 			default:
-				;
+				break;
 		} // switch
 	} // while
 	return 0;
