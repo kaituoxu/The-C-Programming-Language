@@ -51,6 +51,23 @@ void itoa2(int n, char s[])
 	reverse(s);
 }
 
+void itoa3(int n, char s[])
+{
+	int sign, i, mod;
+
+	sign = n;
+
+	i = 0;
+	do {
+		if ((mod = n%10) < 0)
+			mod = -mod;
+		s[i++] = mod + '0';
+	} while ((n /= 10) != 0);
+	if (sign < 0)
+		s[i++] = '-';
+	s[i] = '\0';
+	reverse(s);
+}
 
 int main()
 {
@@ -72,6 +89,8 @@ int main()
 	itoa(n, s);
 	printf("%s\n", s);
 	itoa2(n, s);
+	printf("%s\n", s);
+	itoa3(n, s);
 	printf("%s\n", s);
 	return 0;
 }

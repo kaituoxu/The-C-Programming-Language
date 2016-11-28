@@ -13,49 +13,28 @@ void reverse(char s[])
 	}
 }
 
-void itoa(int n, char s[])
+void itoa(int n, char s[], int base)
 {
-	int sign, i;
+	int sign, i, mod;
 
-	if ((sign = n) < 0) {
-		n = -n;
-	}
-
-	i = 0;
-	if (n == 0)
-		s[i++] = '0';
-	while (n > 0) {
-		s[i++] = n % 10 + '0';
-		n /= 10;
-	}
-	if (sign < 0) 
-		s[i++] = '-';
-	s[i] = '\0';
-	reverse(s);
-}
-
-void itoa2(int n, char s[])
-{
-	int sign, i;
-
-	if ((sign = n) < 0)
-		n = -n;
+	sign = n;
 
 	i = 0;
 	do {
-		s[i++] = n % 10 + '0';
-	} while ((n /= 10) > 0);
+		if ((mod = n%base) < 0)
+			mod = -mod;
+		s[i++] = mod + '0';
+	} while ((n /= base) != 0);
 	if (sign < 0)
 		s[i++] = '-';
 	s[i] = '\0';
 	reverse(s);
 }
 
-
 int main()
 {
 	char s[100];
-	int n;
+	int n, base;
 
 	printf("INT_MIN = %d\n", INT_MIN);
 	printf("INT_MAX = %d\n", INT_MAX);
@@ -67,11 +46,11 @@ int main()
 
 	printf("Enter n: ");
 	scanf("%d", &n);
+	printf("Enter base: ");
+	scanf("%d", &base);
 	printf("n = %d\n", n);
 
-	itoa(n, s);
-	printf("%s\n", s);
-	itoa2(n, s);
+	itoa(n, s, base);
 	printf("%s\n", s);
 	return 0;
 }
