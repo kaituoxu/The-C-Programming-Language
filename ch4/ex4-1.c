@@ -4,7 +4,7 @@
 #define MAXLINE 1000
 
 int GetLine(char line[], int lim);
-int StrIndex(char line[], char pattern[]);
+int StrRIndex(char line[], char pattern[]);
 
 char pattern[] = "ould";
 
@@ -12,11 +12,12 @@ int main()
 {
 	char line[MAXLINE];
 	int found;
+	int last_pos;
 
 	found = 0;
 	while (GetLine(line, MAXLINE) > 0) {
-		if (StrIndex(line, pattern) >= 0) {
-			printf("%s", line);
+		if ((last_pos = StrRIndex(line, pattern)) >= 0) {
+			printf("%d--%s", last_pos, line);
 			found++;
 		}
 	}
@@ -38,32 +39,17 @@ int GetLine(char line[], int lim)
 }
 
 
-int StrIndex(char line[], char pattern[])
+int StrRIndex(char s[], char t[])
 {
-	int i, j;
-	
-	for (i = 0; line[i] != '\0'; ++i) {
-		for (j = 0; j < strlen(pattern); ++j) {
-			if (line[i+j] != pattern[j])
-				break;
-		}
-		if (j == strlen(pattern)) 
-			return i;
-	}
-	return -1;
-}
+	int i, j, k, last;
 
-/* K&R version */
-int strindex(char s[], char t[])
-{
-	int i, j, k;
-
+	last = -1;
 	for (i = 0; s[i] != '\0'; ++i) {
 		for (j = i, k = 0; t[k] != '\0' && s[j] == t[k]; ++j, ++k) {
 			;
 		}
 		if (k > 0 && t[k] == '\0')
-			return i;
+			last = i;
 	}
-	return -1;
+	return last;
 }
