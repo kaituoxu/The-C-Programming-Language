@@ -17,3 +17,5 @@ Solved it by:
 ```bash
 gcc ex4-2.c utils.o -lm
 ```
+
+ex4-4 is in stack.c.
