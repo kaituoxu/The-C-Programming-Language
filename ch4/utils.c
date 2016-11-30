@@ -2,8 +2,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
-int GetLine(char line[], int lim)
-{
+int GetLine(char line[], int lim) {
 	int c, i;
 
 	for (i = 0; i < lim-1 && (c = getchar()) != EOF && c!='\n'; ++i)
@@ -14,8 +13,7 @@ int GetLine(char line[], int lim)
 	return i;
 }
 
-double Atof(char s[])
-{
+double Atof(char s[]) {
 	double val, power;
 	int i, sign;
 
@@ -35,4 +33,8 @@ double Atof(char s[])
 	}
 
 	return sign * val / power;
+}
+
+int Atoi(char s[]) {
+	return (int) Atof(s);
 }
