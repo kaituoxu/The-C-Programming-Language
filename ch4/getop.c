@@ -9,10 +9,10 @@ int Getop(char s[]) {
 		;
 	}
 	s[1] = '\0';
-	if (!isdigit(c) && c != '.' && c != '-')
+	if (!isdigit(c) && c != '.')
 		return c;
 	i = 0;
-	if (isdigit(c) || c == '-')
+	if (isdigit(c))
 		while (isdigit(s[++i] = c = Getch())) {
 			;
 		}
