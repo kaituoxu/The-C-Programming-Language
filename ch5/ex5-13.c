@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "utils.h"
 
+#define DEFALUT_LINE 10
 #define MAXLINES 5000
 
 int main(int argc, char *argv[]) {
@@ -11,14 +12,17 @@ int main(int argc, char *argv[]) {
 	int n, i;
 
 	if (argc == 1)
-		n = 10;
-	else if (argc == 2)
-		if ((*++argv)[0] == '-')
-			n = atoi(++argv[0]);
+		n = DEFALUT_LINE;
+	else if (argc == 2 && (*++argv)[0] == '-')
+			n = atoi(argv[0]+1);
+	else {
+		printf("Usage: %s [-n]\n", argv[0]);
+		exit(1);
+	}
 	//printf("n = %d\n", n);
 
 	if ((nlines = ReadLines(lineptr, MAXLINES)) >= 0) {
-		if (nlines < n) n = nlines;
+		if (n < 1 || n > nlines) n = nlines;
 		for (i = nlines-n; i < nlines; ++i) {
 			printf("%s\n", lineptr[i]);
 		}
