@@ -1,8 +1,15 @@
 CC = gcc
 CCFLAGS = -I ../ 
 
-SOURCES = ex5-10.c getop.c getch.c stack.c
+SOURCES = ex5-14.c line-io.c
+ex5-14: $(SOURCES)
+	$(CC) $^
 
+SOURCES = 5.11.c line-io.c
+5.11: $(SOURCES)
+	$(CC) $^
+
+SOURCES = ex5-10.c getop.c getch.c stack.c
 ex5-10: $(SOURCES)
 	$(CC) $^
 
@@ -25,5 +32,4 @@ ex5-2: ex5-2.c ../ch4/getch.o
 
 clean:
 	rm -f *.out
-	rm -f 5.2
 	rm -f *.d

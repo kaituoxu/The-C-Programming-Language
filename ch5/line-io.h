@@ -1,5 +1,5 @@
-#ifndef KANDR_CH5_UTILS_H_
-#define KANDR_CH5_UTILS_H_
+#ifndef KANDR_CH5_LINE_IO_H_
+#define KANDR_CH5_LINE_IO_H_
 
 // Memory
 char *Alloc(int n);
@@ -10,8 +10,4 @@ int GetLine(char *line, int maxlen);
 int ReadLines(char *lineptr[], int maxlines);
 void WriteLines(char *lineptr[], int nlines);
 
-// Sort
-void Swap(char *v[], int i, int j);
-void Qsort(char *v[], int left, int right);
-
-#endif // KANDR_CH5_UTILS_H_
+#endif // KANDR_CH5_LINE_IO_H_
