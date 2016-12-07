@@ -1,6 +1,22 @@
 CC = gcc
 CCFLAGS = -I ../ 
 
+ex5-19: ex5-19.c
+	$(CC) $^ -o undcl
+
+ex5-18: ex5-18.c
+	$(CC) $^ -o dcl
+
+5.12.2: 5.12.2.c
+	$(CC) $^ -o undcl
+
+5.12.1: 5.12.1.c
+	$(CC) $^ -o dcl
+
+SOURCES = ex5-15.c line-io.c
+ex5-15: $(SOURCES)
+	$(CC) $^
+
 SOURCES = ex5-14.c line-io.c
 ex5-14: $(SOURCES)
 	$(CC) $^
