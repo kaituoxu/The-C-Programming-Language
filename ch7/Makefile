@@ -1,5 +1,8 @@
 CC = gcc
 
+7.5: 7.5.c
+	$(CC) $^ -o cat
+
 ex7.4: ex7-4.c
 	$(CC) $^
 
